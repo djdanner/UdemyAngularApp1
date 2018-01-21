@@ -12,13 +12,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServersComponent implements OnInit {
   allowNewServer = false;
-  serverCreationStatus = 'No Server was created!';
+  serverCreationStatus = 'Status is N/A';
   serverName = '';
+  userName = '';
+
+  allowClearUserName = false;
+  //allowClearUserName = (this.userName.length != 0);
+
 
   constructor() {
     setTimeout(() => {
       this.allowNewServer = true;
-    }, 5000);
+    }, 3000);
   }
 
   // Functions
@@ -26,9 +31,19 @@ export class ServersComponent implements OnInit {
   }
 
   onCreateServer(){
-    this.serverCreationStatus = "Server was created! You're welcome.";
+    this.serverCreationStatus = "Server was created:  " + this.serverName;
   }
 
+  onClearUserName(){
+    this.userName = "";
+  }
+
+  onUpdateUserName(){
+    this.allowClearUserName = (this.userName.length != 0);
+  }
+
+  // We aren't using this.  This shows how to get input, but it lacks
+  // two-way binding - so not good.
   // This function is called with each key-up (i.e., after each char is entered
   // into the input box).
   onUpdateServerName(event:any){

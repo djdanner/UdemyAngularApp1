@@ -1,15 +1,39 @@
-<label>Server Name</label>
-<input
+<!-- Input Method 1 -->
+<!-- <input
   type = "text"
   class = "form-control"
-  (input) = "onUpdateServerName($event)">
+  (input) = "onUpdateServerName($event)"> -->
 
-  <p>{{ serverName}} </p>
+  <!-- Input Method 2 -->
+  <label>Server Name:</label>
+  <input
+    type = "text"
+    class = "form-control"
+    [(ngModel)]="serverName">
 
 <button class="btn btn-primary"
   [disabled]="!allowNewServer"
   (click)="onCreateServer()"
 >Add Server</button>
-{{ serverCreationStatus }}
+
+<p> {{ serverCreationStatus }} </p>
+
+
+<label>User Name:</label>
+<input
+  type = "text"
+  class = "form-control"
+  [(ngModel)]="userName"
+  (input) = "onUpdateUserName()">
+
+  <button class="btn btn-primary"
+    [disabled]="!allowClearUserName"
+    (click)="onClearUserName()"
+  >Clear Input</button>
+
+  <p> {{ userName }} </p>
+
+
+
 <app-server></app-server>
 <app-server></app-server>
