@@ -1,3 +1,4 @@
+<h3>In Servers Component b</h3>
 <!-- Input Method 1 -->
 <!-- <input
   type = "text"
@@ -26,12 +27,28 @@
   [(ngModel)]="userName"
   (input) = "onUpdateUserName()">
 
-  <button class="btn btn-primary"
+  <!-- This works, but below it is a better way. -->
+  <!-- <button class="btn btn-primary"
     [disabled]="!allowClearUserName"
     (click)="onClearUserName()"
+  >Clear Input</button> -->
+
+  <button class="btn btn-primary"
+    [disabled]="userName === ''"
+    (click)="userName = ''"
   >Clear Input</button>
 
   <p> {{ userName }} </p>
+
+<hr>
+<!-- <button class="btn btn-primary" (click)="showSecretMsg = !showSecretMsg">Toggle Text</button> -->
+<button class="btn btn-primary" (click)="onToggleMsgButtonClick()">Toggle Message</button>
+<p *ngIf="showSecretMsg">Add YOUR MESSAGE here!</p>
+<div *ngFor="let logEntry of secretMsgLog"
+  [ngStyle]="{backgroundColor: logEntry >= 5 ? 'blue' : 'transparent'}"
+  [ngClass]="{'white-text' : logEntry >= 5}"
+  >{{ logEntry }}</div>
+<hr>
 
 
 

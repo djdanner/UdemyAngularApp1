@@ -16,9 +16,12 @@ export class ServersComponent implements OnInit {
   serverName = '';
   userName = '';
 
+  showSecretMsg = false;
+
   allowClearUserName = false;
   //allowClearUserName = (this.userName.length != 0);
 
+  secretMsgLog = [];
 
   constructor() {
     setTimeout(() => {
@@ -36,6 +39,11 @@ export class ServersComponent implements OnInit {
 
   onClearUserName(){
     this.userName = "";
+  }
+
+  onToggleMsgButtonClick(){
+    this.showSecretMsg = !this.showSecretMsg;
+    this.secretMsgLog.push(this.secretMsgLog.length + 1);
   }
 
   onUpdateUserName(){
